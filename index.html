@@ -15,26 +15,23 @@
             var data_C = data.C;
             var data_A = data.P.concat(data_C);
             
-            //console.log(Math.floor(Math.random()*(data_A.length)));
-            $('#res').append('<td style="font-size: 100px;">'+data_A[Math.floor(Math.random()*(data_A.length))]+'</td>');
-        });
-        
-        // $(document).ready(function(){
-        //     $.ajax({
-        //         dataType : 'json',
-        //         url : 'KoreanNoun.jsons',
-        //         success : function (res) {
-        //             console.log(res); 
-        //         },
-        //         error : function (res, status, err) {
-        //             console.log(status+'/'+err);
-        //         }
-        //     });
-        // });
+        function pickOne(){
+            $('#res').empty();
+            $('#res').append('<td style="border: solid black 1px; font-size: 100px;">'+data_A[Math.floor(Math.random()*(data_A.length))]+'</td>');
+        }
+
+        function pickN(cnt){
+            $('#res').empty();
+            for (let index = 0; index < cnt+1; index++) {
+                $('#res').append('<tr><th style="border: solid black 1px; font-size: 100px; padding: 0px 10px 0px 10px;">'+(index+1)+'</th><td style="border: solid black 1px; font-size: 100px;">'+data_A[Math.floor(Math.random()*(data_A.length))]+'</td></tr>');
+            }
+        }
     </script>
 </head>
 <body>
-    <div style="align-content: center; margin-left: 40%; margin-top: 25%;">
+    <div style="align-content: center; margin-left: 30%; margin-top: 15%;">
+        <button style="font-size: 100px; margin-left: 10%; margin-bottom: 10%;" onclick="javascript:pickOne()">1개</button>
+        <button style="font-size: 100px; margin-left: 10%; margin-bottom: 10%;" onclick="javascript:pickN(5)">5개</button>
         <table id="res" style="border: solid black 1px; align-content: center; ">
             
         </table>
