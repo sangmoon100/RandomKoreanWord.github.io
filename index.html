@@ -22,13 +22,13 @@
         
         function pickOne(){
             init();
-            $('#res').append('<td style="border: solid black 1px; font-size: 100px;">'+data_A[Math.floor(Math.random()*(data_A.length))]+'</td>');
+            $('#res').append('<td style="border: solid black 1px; font-size: 100px;">'+dataset[Math.floor(Math.random()*(dataset.length))]+'</td>');
         }
 
         function pickN(cnt){
             init();
             for (let index = 0; index < cnt; index++) {
-                $('#res').append('<tr><th style="border: solid black 1px; font-size: 100px; padding: 0px 10px 0px 10px;">'+(index+1)+'</th><td style="border: solid black 1px; font-size: 100px;">'+data_A[Math.floor(Math.random()*(data_A.length))]+'</td></tr>');
+                $('#res').append('<tr><th style="border: solid black 1px; font-size: 100px; padding: 0px 10px 0px 10px;">'+(index+1)+'</th><td style="border: solid black 1px; font-size: 100px;">'+dataset[Math.floor(Math.random()*(dataset.length))]+'</td></tr>');
             }
         }
     </script>
