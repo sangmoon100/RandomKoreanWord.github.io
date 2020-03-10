@@ -13,7 +13,10 @@
         var data_P = data.P;
         var data_C = data.C;
         var data_A = data.P.concat(data_C);
-            
+        
+        $('#total').append('일반명사 : ' + data_C.length + '<br>' +
+                           '고유명사 : ' + data_P.length);
+
         function pickOne(){
             $('#res').empty();
             $('#res').append('<td style="border: solid black 1px; font-size: 100px;">'+data_A[Math.floor(Math.random()*(data_A.length))]+'</td>');
@@ -28,6 +31,11 @@
     </script>
 </head>
 <body>
+    <div>
+        <p id="total" style="font-size: 80px;">
+            
+        </p>
+    </div>
     <div style="align-content: center; margin-left: 30%; margin-top: 15%;">
         <button style="font-size: 100px; margin-left: 10%; margin-bottom: 10%;" onclick="javascript:pickOne()">1개</button>
         <button style="font-size: 100px; margin-left: 10%; margin-bottom: 10%;" onclick="javascript:pickN(5)">5개</button>
