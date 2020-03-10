@@ -14,9 +14,10 @@
         var data_C = data.C;
         var data_A = data.P.concat(data_C);
         
-        $('#total').text('일반명사 : ' + data_C.length + ', ' +
+        $(function(){
+        $('#total').html('일반명사 : ' + data_C.length + '<br>' +
                            '고유명사 : ' + data_P.length);
-
+        });
         function pickOne(){
             $('#res').empty();
             $('#res').append('<td style="border: solid black 1px; font-size: 100px;">'+data_A[Math.floor(Math.random()*(data_A.length))]+'</td>');
