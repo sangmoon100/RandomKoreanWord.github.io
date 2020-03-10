@@ -14,7 +14,7 @@
         var data_C = data.C;
         var data_A = data.P.concat(data_C);
         
-        $('#total').append('일반명사 : ' + data_C.length + '<br>' +
+        $('#total').text('일반명사 : ' + data_C.length + '<br>' +
                            '고유명사 : ' + data_P.length);
 
         function pickOne(){
