@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>Random Word</title>
+    <title>Random Korean Noun</title>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript">
@@ -14,7 +14,7 @@
         var data_C = data.C;
         var data_A = data.P.concat(data_C);
         
-        $('#total').text('일반명사 : ' + data_C.length + '<br>' +
+        $('#total').html('일반명사 : ' + data_C.length + '<br>' +
                            '고유명사 : ' + data_P.length);
 
         function pickOne(){
