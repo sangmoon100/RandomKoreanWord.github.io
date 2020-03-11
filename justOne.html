@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Just One</title>
+    <link rel="stylesheet" type='text/css' href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript">
+        var dataset;
+        var problem = {};
+        var subProblem = Array(5);
+        var cells;
+        const CORRECT = "blue";
+        const FAIL = "red";
+        const DISABLE = "gray";
+        var curr;
+        var mode;
+
+        $(function(){
+            $('.total').html('일반명사 : ' + data_C.length + '<br>' +
+                            '고유명사 : ' + data_P.length);
+            init();
+        });
+        
+        function init() {
+            var param = location.href.substr(location.href.lastIndexOf('=')+1);
+            
+            param ? dataset = data_A : dataset = data_C;
+            for (let i = 0; i < 13; i++) {
+                subProblem = [];
+                for (let j = 0; j < 5; j++) {
+                    subProblem.push(dataset[Math.floor(Math.random()*(dataset.length))]);
+                }
+                problem[i+1] = subProblem;
+            }
+            cells = $('.problem_cell');
+            for (var i = 0; i < cells.length; i++) {
+                cells[i].style.removeProperty('background-color');
+                cells[i].style.backgroundColor = DISABLE;
+            }
+            mode = 'A';
+            loadProblem(1);
+        }
+
+        function loadProblem(id) {
+            curr = id;
+            if (mode == 'A') cells[id-1].style.removeProperty('background-color');
+            loadSubProblem(id);
+        }
+
+        function checkProblem(id,result) {
+            cells[id-1].style.backgroundColor = result;
+            if (id < 13) {
+                loadProblem(id+1);
+            } else {
+                mode = 'R';
+                $('#res').empty();
+                $('button').hide();
+                for (var i = 0; i < cells.length; i++) {
+                    console.log('i = ' + i);
+                    cells[i].addEventListener('click', problem_cellClick, false);
+                }
+            }
+        }
+
+        function loadSubProblem(id){
+            $('#res').empty();
+            for (let index = 0; index < 5; index++) {
+                $('#res').append('<tr><th style="border: solid black 1px; font-size: 100px; padding: 0px 10px 0px 10px;">'+(index+1)+'</th><td class="subProblem_cell">'+problem[id][index]+'</td></tr>');
+            }
+        }
+
+        function problem_cellClick(square){
+            loadSubProblem(square.target.id);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <p class="total">
+            
+        </p>
+    </div>
+    <div>
+        <label style="font-size: 60px;">고유명사 표함<input type="checkbox" id="proper_check" value="P" style="width:50px; height:50px;" readonly></label>
+    </div>
+    <hr>
+    <div style="align-content: center; margin-left: 30%; margin-top: 5%;">
+        <table id="res" class="subProblem_table">
+            
+        </table>
+        <button onclick="javascript:checkProblem(curr,CORRECT)">성공</button>
+        <button onclick="javascript:checkProblem(curr,FAIL)">실패</button>
+    </div>
+    <div>
+        <table class="problem_table">
+            <tr>
+                <td class="problem_cell" id="1">1</td>
+                <td class="problem_cell" id="2">2</td>
+                <td class="problem_cell" id="3">3</td>
+                <td class="problem_cell" id="4">4</td>
+                <td class="problem_cell" id="5">5</td>
+                <td class="problem_cell" id="6">6</td>
+                <td class="problem_cell" id="7">7</td>
+            </tr>
+            <tr>
+                <td class="problem_cell" id="8">8</td>
+                <td class="problem_cell" id="9">9</td>
+                <td class="problem_cell" id="10">10</td>
+                <td class="problem_cell" id="11">11</td>
+                <td class="problem_cell" id="12">12</td>
+                <td class="problem_cell" id="13">13</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

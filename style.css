@@ -1,0 +1,48 @@
+.title {
+    position: absolute;
+    background-color: pink;
+    text-align: center;
+    vertical-align: middle;
+    font-family: cursive, sans-serif;
+    font-size: 60px;
+    left:  30%;
+}
+
+.problem_cell {
+    border: 2px solid #333;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: cursive, sans-serif;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.problem_table {
+    border-collapse: collapse;
+    position: absolute;
+    left: 30%;
+    margin-left: -155px;
+    top: 80%;
+}
+
+.subProblem_cell {
+    border: solid black 1px;
+    font-size: 100px;
+}
+
+.subProblem_table {
+    border: solid black 1px;
+    align-content: center;
+}
+
+button {
+    font-size: 90px;
+    margin-left: 5%;
+    margin-bottom: 10%;
+}
+
+.total {
+    font-size: 60px;
+}

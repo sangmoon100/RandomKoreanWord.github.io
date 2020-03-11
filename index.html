@@ -3,14 +3,14 @@
 <head>
     <meta charset='utf-8'>
     <title>Korean noun randomizer</title>
-    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <link rel="stylesheet" type='text/css' href="style.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript">
         var dataset;
 
         $(function(){
-            $('#total').html('일반명사 : ' + data_C.length + '<br>' +
+            $('.total').html('일반명사 : ' + data_C.length + '<br>' +
                             '고유명사 : ' + data_P.length);
         });
         
@@ -22,20 +22,20 @@
         
         function pickOne(){
             init();
-            $('#res').append('<td style="border: solid black 1px; font-size: 100px;">'+dataset[Math.floor(Math.random()*(dataset.length))]+'</td>');
+            $('#res').append('<td class="subProblem_cell">'+dataset[Math.floor(Math.random()*(dataset.length))]+'</td>');
         }
 
         function pickN(cnt){
             init();
             for (let index = 0; index < cnt; index++) {
-                $('#res').append('<tr><th style="border: solid black 1px; font-size: 100px; padding: 0px 10px 0px 10px;">'+(index+1)+'</th><td style="border: solid black 1px; font-size: 100px;">'+dataset[Math.floor(Math.random()*(dataset.length))]+'</td></tr>');
+                $('#res').append('<tr><th style="border: solid black 1px; font-size: 100px; padding: 0px 10px 0px 10px;">'+(index+1)+'</th><td class="subProblem_cell">'+dataset[Math.floor(Math.random()*(dataset.length))]+'</td></tr>');
             }
         }
     </script>
 </head>
 <body>
     <div>
-        <p id="total" style="font-size: 60px;">
+        <p class="total">
             
         </p>
     </div>
@@ -43,10 +43,11 @@
         <label style="font-size: 60px;">고유명사 표함<input type="checkbox" id="proper_check" value="P" style="width:50px; height:50px;"></label>
     </div>
     <hr>
-    <div style="align-content: center; margin-left: 30%; margin-top: 5%;">
-        <button style="font-size: 100px; margin-left: 5%; margin-bottom: 10%;" onclick="javascript:pickOne()">1개</button>
-        <button style="font-size: 100px; margin-left: 5%; margin-bottom: 10%;" onclick="javascript:pickN(5)">5개</button>
-        <table id="res" style="border: solid black 1px; align-content: center; ">
+    <div style="align-content: center; margin-left: 10%; margin-top: 5%;">
+        <button onclick="javascript:pickOne()">1개</button>
+        <button onclick="javascript:pickN(5)">5개</button>
+        <button onclick="javascript:location.href='justOne.html?proper_checked='+$('#proper_check')[0].checked">저스트 원</button>
+        <table id="res" style="border: solid black 1px; align-content: center; margin-left: 30%;">
             
         </table>
     </div>
